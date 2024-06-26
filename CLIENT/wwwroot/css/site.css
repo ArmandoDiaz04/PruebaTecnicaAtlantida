@@ -1,0 +1,64 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+/*Css personalizado*/
+.colorAtlantida {
+    background-color: #D9272E !important;
+}
+
+.colorExcel {
+    background-color: #1f7044;
+}
+
+.navBarAtlantida{
+    color: white !important;
+}
+
+.fuenteTabla {
+    font-size: 10px !important;
+    text-align: center !important;
+}
+
+.fuenteBotones {
+    font-size: 10px !important;
+}
+
+.detallesTarjeta{
+    gap: 30px;
+}
+
+.detallesTarjeta p {
+    font-size: 14px !important;
+    color: #D2D2D2;
+    margin-bottom: -1px
+}
+
+.detallesTarjeta h3{
+font-size : 16px !important;
+font-weight: bolder;
+}
+
+.ListadoMovimientos {
+    /* Ajustar el tamaño y estilos según sea necesario */
+    width: 100%; /* Ajusta el ancho al 100% del contenedor padre */
+    margin-top: 1rem; /* Margen superior */
+    padding: 1rem; /* Relleno interno */
+    border: 1px solid #dee2e6; /* Borde opcional */
+    border-radius: 0.25rem; /* Bordes redondeados */
+}

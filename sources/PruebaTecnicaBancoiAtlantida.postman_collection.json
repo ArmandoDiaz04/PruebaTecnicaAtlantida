@@ -1,0 +1,244 @@
+{
+	"info": {
+		"_postman_id": "0346218e-c7b2-4f51-b870-2600d30eef7e",
+		"name": "PruebaTecnicaBancoiAtlantida",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13974945"
+	},
+	"item": [
+		{
+			"name": "GetMovimientoById",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5100/api/Movimiento/info/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5100",
+					"path": [
+						"api",
+						"Movimiento",
+						"info",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ObtnenerMovimientoXmes",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"idTarjeta\": 1,\n  \"numeroTarjeta\": \"4550-0606-1509-0099\",\n  \"tipo\": 1,\n  \"mes\": 6,\n  \"anio\": 2024\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5100/api/Movimiento/movimientos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5100",
+					"path": [
+						"api",
+						"Movimiento",
+						"movimientos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregarmovimiento",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"idTarjeta\": 1,\n  \"descripcion\": \"prueba\",\n  \"fechaMovimiento\": \"2024-06-26T00:33:41.104Z\",\n  \"monto\": 5,\n  \"tipoMovimiento\": \"1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5100/api/Movimiento",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5100",
+					"path": [
+						"api",
+						"Movimiento"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetListTarjetas",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5100/api/Tarjeta/List",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5100",
+					"path": [
+						"api",
+						"Tarjeta",
+						"List"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetInfoTarjetaById",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5100/api/Tarjeta/info/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5100",
+					"path": [
+						"api",
+						"Tarjeta",
+						"info",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTarjetaDetails",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 3,\n  \"numeroTarjeta\": \"1234 1234 1234 1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5100/api/Tarjeta/detail",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5100",
+					"path": [
+						"api",
+						"Tarjeta",
+						"detail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddTarjeta",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nombreTitular\": \"Christian\",\n  \"numeroTarjeta\": \"1234 1234 1234 1234\",\n  \"montoOtorgado\": 1222,\n  \"porceInteres\": 2,\n  \"porceInteresMinimo\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5100/api/Tarjeta",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5100",
+					"path": [
+						"api",
+						"Tarjeta"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

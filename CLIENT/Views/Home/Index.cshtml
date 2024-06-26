@@ -1,0 +1,49 @@
+﻿@model List<CLIENT.Models.ViewModels.TarjetaCreditoVM>
+
+@{
+    ViewData["Title"] = "Inicio";
+}
+
+<div class="container-xl">
+    <p class="fw-bold">Listado de Tarjetas de Crédito</p>
+</div>
+
+<div class="container-xl">
+    <div class="table-responsive">
+        <table class="table fuenteTabla">
+            <tr>
+                <th>Número Tarjeta</th>
+                <th>Titular</th>
+                <th>Monto Otorgado</th>
+                <th>Porcentaje de Interés</th>
+                <th>Porcentaje de Interés Cuota Mínima</th>
+                <th>Acciones</th>
+            </tr>
+            @foreach (var tarjeta in Model)
+            {
+                <tr>
+                    <td>@tarjeta.numeroTarjeta</td>
+                    <td>@tarjeta.nombreTitular</td>
+                    <td>@tarjeta.montoOtorgado.ToString("C")</td>
+                    <td>@tarjeta.porceInteres</td>
+                    <td>@tarjeta.porceInteresMinimo</td>
+                    <td> <button onclick="VerDetallesTarjeta('@tarjeta.id', '@tarjeta.numeroTarjeta')" type="button" class="btn-danger btn fuenteBotones">Ver</button></td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+
+
+
+@section Scripts{
+    <script>
+        function VerDetallesTarjeta(id, numeroTarjeta) {
+            var url = '@Url.Action("Detalles", "Tarjeta")';
+            url += '?id=' + encodeURIComponent(id) + '&numeroTarjeta=' + encodeURIComponent(numeroTarjeta);
+            console.log(url);
+            window.location.href = url;
+        }
+    </script>
+}

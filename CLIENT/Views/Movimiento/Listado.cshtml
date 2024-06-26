@@ -1,0 +1,79 @@
+﻿@{
+    Layout = null;
+}
+
+@model List<CLIENT.Models.ViewModels.MovimientosTarjetaVM>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12" style="max-height: 200px; overflow-y: auto;">
+            <table class="table fuenteTabla table-striped table-bordered w-100">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Descripción</th>
+                        <th class="text-end">Monto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var movimiento in Model)
+                    {
+                        <tr>
+                            <td>
+                                <p class="mb-0">@movimiento.fechaMovimiento.ToString("dd/MM/yyyy")</p>
+                            </td>
+                            <td>
+                                <p class="mb-0">@movimiento.descripcion</p>
+                            </td>
+                            <td class="text-end">
+                                <p class="mb-0">@movimiento.monto.ToString("C")</p>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-bordered w-100">
+                <thead class="table-light">
+                    <tr>
+                        <th class="text-secondary">Total</th>
+                        <th class="text-end">@Model.Sum(x => x.monto).ToString("C")</th>
+                    </tr>
+                </thead>
+            </table>
+            <div id="ListadoMovimientos" class="ListadoMovimientos"></div>
+            <div class="col-xl-12 d-flex justify-content-center">
+                <div class="d-flex justify-content-end gap-3">
+                    <button onClick="exportarExcel()" class="btn colorExcel text-light shadow-lg">Exportar <i class="fas fa-file-excel ms-3"></i></button>
+                    <button onClick="exportarEstadoCuenta()" class="btn colorAtlantida text-light shadow-lg">Exportar <i class="fas fa-file-pdf ms-3"></i></button>
+                </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    //Al cargar la vista mostraremos las compras de la tarjeta
+    $(document).ready(function () {
+        $('#mesActual, #mesPasado').change(function () {
+            if ($(this).is(':checked')) {
+                var opcion = $(this).val();
+                if (opcion == "mesActual") {
+                    var fechaActual = new Date();
+                    var mesActual = fechaActual.getMonth() + 1;
+                    var anioActual = fechaActual.getFullYear();
+                    Listado(mesActual, anioActual)
+                    $(this).prop('checked', true);
+                } else {
+                    var fechaActual = new Date();
+                    var mesActual = fechaActual.getMonth() + 1;
+                    var anioActual = fechaActual.getFullYear();
+                    Listado(mesActual - 1, anioActual);
+                    $(this).prop('checked', true);
+                }
+            }
+        });
+    })
+</script>

@@ -1,0 +1,57 @@
+﻿@{
+    Layout = null;
+}
+@model CLIENT.Models.ViewModels.MovimientosTarjetaVM
+
+<p class="fw-bolder">
+    @{
+        string TipoMovimiento = (ViewBag.tipoMovimiento == 1) ? "compra" : "pago";
+    }
+    Registro de @TipoMovimiento para la tarjeta
+</p>
+<div class="mt-2">
+    <form id="FormMovimiento">
+        <input type="hidden" value="@ViewBag.tipoMovimiento" name="tipoMovimiento" />
+        <input type="hidden" value="@ViewBag.idTarjeta" name="idTarjeta" />
+        <div class="form-floating mb-3">
+            <input name="fechaMovimiento" readonly id="fechaMovimiento" type="date" class="form-control" />
+            <label>Fecha de @TipoMovimiento</label>
+            <span asp-validation-for="fechaMovimiento" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <textarea name="descripcion" style="height: 100px" class="form-control"></textarea>
+            <label>Descripción</label>
+            <span asp-validation-for="descripcion" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <input class="form-control" id="monto" type="text" name="monto" />
+            <label>Monto</label>
+            <span asp-validation-for="monto" class="text-danger"></span>
+        </div>
+        <div class="form-group d-flex justify-content-end align-items-end mt-2">
+            <button type="button" class="btn colorAtlantida text-light" onclick="SendDataFormAdd()">Guardar @TipoMovimiento <i class="fas fa-plus ms-2"></i></button>
+        </div>
+    </form>
+</div>
+
+<script>
+    $(document).ready(function () {
+        setActualDate("#fechaMovimiento");
+        $('#monto').inputmask({
+            alias: 'numeric',
+            groupSeparator: ',',
+            autoGroup: true,
+            digits: 2,
+            digitsOptional: false,
+            prefix: '$',
+            placeholder: '0',
+            rightAlign: false,
+            autoUnmask: true,
+            clearMaskOnLostFocus: true,
+            removeMaskOnSubmit: true
+        });
+    })
+</script>
+
+
+
